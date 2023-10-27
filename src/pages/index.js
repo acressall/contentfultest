@@ -8,17 +8,13 @@ import ArticlePreview from '../components/article-preview'
 
 class RootIndex extends React.Component {
   render() {
-    const posts = get(this, 'props.data.allContentfulBlogPost.nodes')
-    const [author] = get(this, 'props.data.allContentfulPerson.nodes')
+    const products = get(this, 'props.data.allContentfulProducts.nodes')
+    const hero = get(this, 'props.data.allContentfulHero.nodes')
 
     return (
       <Layout location={this.props.location}>
-        <Hero
-          image={author.heroImage.gatsbyImage}
-          title={author.name}
-          content={author.shortBio}
-        />
-        <ArticlePreview posts={posts} />
+        <Hero content={hero} />
+        <ArticlePreview products={products} />
       </Layout>
     )
   }
@@ -28,37 +24,19 @@ export default RootIndex
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allContentfulBlogPost(sort: { publishDate: DESC }) {
+    allContentfulProducts {
       nodes {
-        title
-        slug
-        publishDate(formatString: "MMMM Do, YYYY")
-        tags
-        heroImage {
-          gatsbyImage(
-            layout: FULL_WIDTH
-            placeholder: BLURRED
-            width: 424
-            height: 212
-          )
-        }
-        description {
-          raw
-        }
+        productName
+        url
       }
     }
-    allContentfulPerson(
-      filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
+
+    allContentfulHero (
+      filter: { contentful_id: { eq: "645523fc-5814-53ec-9b92-cdac707a1440" } }
     ) {
       nodes {
-        name
-        shortBio {
-          raw
-        }
+        id
         title
-        heroImage: image {
-          gatsbyImage(layout: CONSTRAINED, placeholder: BLURRED, width: 1180)
-        }
       }
     }
   }

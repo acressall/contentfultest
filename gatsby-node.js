@@ -9,10 +9,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(
     `
       {
-        allContentfulBlogPost {
+        allContentfulProducts {
           nodes {
             title
-            slug
+            logo
+          }
+        }
+      }
+    `,
+    `
+      {
+        allContentfulHero {
+          nodes {
+            title
+            description
           }
         }
       }
