@@ -12,6 +12,7 @@
     "dotenv": "^16.3.1",
     "gatsby": "^5.5.0",
     "gatsby-plugin-image": "^3.5.0",
+    "gatsby-plugin-netlify": "^5.1.1",
     "gatsby-plugin-react-helmet": "^6.5.0",
     "gatsby-plugin-sharp": "^5.5.0",
     "gatsby-source-contentful": "^8.5.0",
